@@ -5,6 +5,7 @@ next test
 
 Musheer testing
 
+
 Target Audience: Doctors, Clinicians, Nursing, Medstaff, Dental, Massage, Chiropractic, etc
 
 Problem to address: medstaff spend 15-20 hours of overtime every week recording notes for insurance purposes. The medical industry is highly overburdened with patients and this steals from their time caring for patients. This will make their practice more efficient and better.
