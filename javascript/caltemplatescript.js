@@ -275,8 +275,8 @@ var firepName;
 var fireDescrip;
 var fireDate;
 var newApptLink;
-database.ref().on("child_added", function(childSnapshot){
-   // newApptLink="";
+database.ref().on("child_added", function(childSnapshot, ChildKey){
+   console.log(ChildKey);
    firepName = childSnapshot.val().patientName;
    fireDescrip = childSnapshot.val().apptDescrip;
    fireDate = childSnapshot.val().apptDate;
