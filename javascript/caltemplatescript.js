@@ -65,11 +65,15 @@ function createCalendar(date, side) {
          }
          currentDay.innerHTML = i;
 
-         //show marks
+         //show marks & appt links
          if (globalEventObj[new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()]) {
             let eventMark = document.createElement("div");
             eventMark.className = "day-mark";
             currentDay.appendChild(eventMark);
+            let newApptLink = document.createElement("div");
+            newApptLink.className = "appt-link";
+            currentDay.appendChild(newApptLink);
+
          }
 
          currentTr.appendChild(currentDay);
@@ -235,18 +239,19 @@ var firebaseConfig = {
 
 //every time appt is added, I need to grab patient name, date, and desription and store on firebase. 
 // Then render that data on the page in current format.
+// var globalObjectCopy;
 $("#addEventButton").on("click", function(event){
    event.preventDefault();
    var patientName=$("#patientNameInput").val().trim();
-   // console.log(patientName);
    var apptDescrip=$("#eventDescInput").val().trim();
-   // console.log(aptDescrip);
+   // globalObjectCopy = globalEventObj;
+   // console.log(globalObjectCopy);
    var apptDate = selectedDate.toLocaleString("en-US", {
       month: "long",
       day: "numeric",
       year: "numeric"
    });
-   // console.log(formattedDate);
+
 
 //SETTING UP OBJECT TO PUSH TO FIREBASE
 var apptDetails = {
@@ -269,14 +274,13 @@ database.ref().push(apptDetails);
 var firepName;
 var fireDescrip;
 var fireDate;
+var newApptLink;
 database.ref().on("child_added", function(childSnapshot){
+   // newApptLink="";
    firepName = childSnapshot.val().patientName;
-   // console.log(firepName);
    fireDescrip = childSnapshot.val().apptDescrip;
-   // console.log(fireDescrip);
    fireDate = childSnapshot.val().apptDate;
-   // console.log(fireDate);
-   var newApptLink = $("<a>");
+   newApptLink = $("<a>");
    newApptLink.attr("href", "appoinment.html");
    newApptLink.addClass("list-group-item list-group-item-action");
    newApptLink.append("<p>" + firepName + ": " + fireDate + " - " + fireDescrip + "</p>");
@@ -310,6 +314,9 @@ addEventButton.onclick = function (e) {
 
    if (!selectedDayBlock.querySelector(".day-mark")) {
       selectedDayBlock.appendChild(document.createElement("div")).className = "day-mark";
+      // console.log(newApptLink);
+      // selectedDayBlock.appendChild(document.createElement("div")).className = "appt-details";
+      // $(".appt-details").append(newApptLink);
    }
 
    let inputs = addForm.getElementsByTagName("input");
@@ -320,5 +327,4 @@ addEventButton.onclick = function (e) {
    for (let i = 0; i < labels.length; i++) {
       labels[i].className = "";
    }
-console.log(globalEventObj);
 }
