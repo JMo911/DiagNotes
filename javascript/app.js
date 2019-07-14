@@ -35,7 +35,6 @@ var notes = getAllNotes();
 renderNotes(notes);
 
 
-
 /*-----------------------------
       Voice Recognition 
 ------------------------------*/
@@ -121,7 +120,11 @@ $('#save-note-btn').on('click', function(e) {
     renderNotes(getAllNotes());
     noteTextarea.val('');
     instructions.text('Note saved successfully.');
+
+
   }
+  
+    
       
 })
 
@@ -199,6 +202,7 @@ function getAllNotes() {
   var key;
   for (var i = 0; i < localStorage.length; i++) {
     key = localStorage.key(i);
+    
 
     if(key.substring(0,5) == 'note-') {
       notes.push({
@@ -217,7 +221,87 @@ function deleteNote(dateTime) {
 
 
 
+$("#notesContainer").append(notes);
+
+
 
 });
 
-//BEGINNING PERSISTENT CONVERSATION WORK
+//BEGINNING PERSISTENT CONVERSATION WORK - already in local storage (makes sense for this app)
+// var noteList=[];
+
+
+// $("#save-note-btn").on("click", function(){
+//   var noteDiv = $("<div>");
+//   noteDiv.append()
+//   $("#notesContainer").append(noteDiv);
+
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var firebaseConfig = {
+//   apiKey: "AIzaSyDzhSWIeHaVKr2ipKn4kQYXUI-_d_TnE6I",
+//   authDomain: "diagnotes-project-1.firebaseapp.com",
+//   databaseURL: "https://diagnotes-project-1.firebaseio.com",
+//   projectId: "diagnotes-project-1",
+//   storageBucket: "",
+//   messagingSenderId: "227854326970",
+//   appId: "1:227854326970:web:aab38cfa0ff6ff62"
+// };
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+// var database = firebase.database();
+
+// $("#save-note-btn").on("click", function(event){
+//   event.preventDefault();
+//   var conv="";
+//   conv=$("#note-textarea").val();
+
+
+
+// //SETTING UP OBJECT TO PUSH TO FIREBASE
+// var conversation = {
+//   conversation: conv
+// };
+
+// database.ref().push(conversation);
+
+// });
+// //END OF FIREBASE STORAGE ON CLICK EVENT
+// var dataConv;
+// database.ref().on("child_added", function(childSnapshot){
+//   // $("#note-textarea").val() = "";
+//   dataConv = childSnapshot.val().conversation;
+//   $("#note-textarea").append(dataConv);
+// });
