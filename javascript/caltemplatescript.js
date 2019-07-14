@@ -142,7 +142,7 @@ function showEvents() {
          let eventDescription = document.createElement("div");
          eventDescription.className = "eventCard-description";
 
-         eventHeader.appendChild(document.createTextNode(key));
+         eventHeader.append(document.createTextNode(key));
          eventContainer.appendChild(eventHeader);
 
          eventDescription.appendChild(document.createTextNode(objWithDate[key]));
@@ -218,13 +218,85 @@ cancelAdd.onclick = function (e) {
    }
 }
 
+//FIREBASE CONFIG
+var firebaseConfig = {
+   apiKey: "AIzaSyDzhSWIeHaVKr2ipKn4kQYXUI-_d_TnE6I",
+   authDomain: "diagnotes-project-1.firebaseapp.com",
+   databaseURL: "https://diagnotes-project-1.firebaseio.com",
+   projectId: "diagnotes-project-1",
+   storageBucket: "",
+   messagingSenderId: "227854326970",
+   appId: "1:227854326970:web:aab38cfa0ff6ff62"
+ };
+ // Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
+ var database = firebase.database();
+
+
+//every time appt is added, I need to grab patient name, date, and desription and store on firebase. 
+// Then render that data on the page in current format.
+$("#addEventButton").on("click", function(event){
+   event.preventDefault();
+   var patientName=$("#patientNameInput").val().trim();
+   // console.log(patientName);
+   var apptDescrip=$("#eventDescInput").val().trim();
+   // console.log(aptDescrip);
+   var apptDate = selectedDate.toLocaleString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+   });
+   // console.log(formattedDate);
+
+//SETTING UP OBJECT TO PUSH TO FIREBASE
+var apptDetails = {
+   patientName: patientName,
+   apptDescrip: apptDescrip,
+   apptDate: apptDate
+};
+
+database.ref().push(apptDetails);
+
+
+
+
+
+});
+//END OF FIREBASE STORAGE ON CLICK EVENT
+
+
+//STORE APPOINTMENTS ON CHILD ADDED IN FIREBASE
+var firepName;
+var fireDescrip;
+var fireDate;
+database.ref().on("child_added", function(childSnapshot){
+   firepName = childSnapshot.val().patientName;
+   // console.log(firepName);
+   fireDescrip = childSnapshot.val().apptDescrip;
+   // console.log(fireDescrip);
+   fireDate = childSnapshot.val().apptDate;
+   // console.log(fireDate);
+   var newApptLink = $("<a>");
+   newApptLink.attr("href", "appoinment.html");
+   newApptLink.addClass("list-group-item list-group-item-action");
+   newApptLink.append("<p>" + firepName + ": " + fireDate + " - " + fireDescrip + "</p>");
+   $("#apptList").append(newApptLink);
+});
+
+
+
+
+
+
+
+
 var addEventButton = document.getElementById("addEventButton");
 addEventButton.onclick = function (e) {
-   let title = document.getElementById("eventTitleInput").value.trim();
-   let desc = document.getElementById("eventDescInput").value.trim();
+   let title = firepName;
+   let desc = fireDescrip;
 
    if (!title || !desc) {
-      document.getElementById("eventTitleInput").value = "";
+      document.getElementById("patientNameInput").value = "";
       document.getElementById("eventDescInput").value = "";
       let labels = addForm.getElementsByTagName("label");
       for (let i = 0; i < labels.length; i++) {
@@ -248,5 +320,5 @@ addEventButton.onclick = function (e) {
    for (let i = 0; i < labels.length; i++) {
       labels[i].className = "";
    }
-
+console.log(globalEventObj);
 }

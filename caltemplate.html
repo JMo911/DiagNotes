@@ -25,6 +25,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Firebase References -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
   </head>
 
   <body>
@@ -116,8 +119,8 @@
 
                 <div class="row">
                   <div class="input-field col s6">
-                    <input id="eventTitleInput" type="text" class="validate">
-                    <label for="eventTitleInput">Title</label>
+                    <input id="patientNameInput" type="text" class="validate">
+                    <label for="patientNameInput">Patient Name</label>
                   </div>
                   <div class="input-field col s6">
                     <input id="eventDescInput" type="text" class="validate">
@@ -138,6 +141,16 @@
         </div>
       </div>
 
+
+
+
+
+
+    </div>
+    <!-- LIST GROUP TO STORE SCHEDULED APPOINTMENTS -->
+    <div class="container">
+      <div class="list-group" id="apptList">
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
