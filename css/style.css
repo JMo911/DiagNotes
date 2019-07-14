@@ -1,3 +1,9 @@
-/* TESTING CONNECTION .jumbotron{
-    background-color: aqua;
-} */
+.jumbotron{
+    background-color: #ffffff;
+    max-height: 100px;
+    margin:0;
+    padding: 0;
+}
+.headline {
+    text-align: -9999;
+}
