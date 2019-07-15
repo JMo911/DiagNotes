@@ -4,15 +4,14 @@ $(document).ready(function() {
  $.ajax({
      url: queryurl,
     method: "GET"
- }).then(function (response) {
-  var results = response.data;
-  for (var i = 0; i < results.length; i++) {
-    var jokes = results[i].setup;
-     
-     console.log(response);
-     $("#jokesHere").text(jokes);
-  }
- });
+}).then(function (response) {
+    console.log(response);
+  
+    $("#setup").text(response.setup);
+    $("#delivery").text(response.delivery);
+   
+  });
+
  try {
   var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   var recognition = new SpeechRecognition();
@@ -214,8 +213,17 @@ function getAllNotes() {
 function deleteNote(dateTime) {
   localStorage.removeItem('note-' + dateTime); 
 }
+$("#submit").click( function(event) {
+  event.preventDefault();
+  $("#addmedication").empty()
+  var addmedication = $("#medication-input").val()
+  $("#addmedication").text(addmedication)
+  clear()
+});
 
-
-
+function clear() {
+  $('input[type="text"]').val('');
+  $('#medication-input').val('');
+};
 
 });
