@@ -213,12 +213,42 @@ function getAllNotes() {
 function deleteNote(dateTime) {
   localStorage.removeItem('note-' + dateTime); 
 }
+
+
 $("#submit").click( function(event) {
   event.preventDefault();
   $("#addmedication").empty()
   var addmedication = $("#medication-input").val()
   $("#addmedication").text(addmedication)
   clear()
+  var medicationName = addmedication
+  var queryURL =                      + medicationName +
+  console.log(queryURL)
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+
+  .then(function(response) {
+    var results = response.data;
+    console.log(response.data)
+    for (var i = 0; i < results.length; i++){
+
+    var priceDiv = $("<div>");
+    var priceTag = $("<p>").text("Price: " + results[i].price);
+    
+    var medImage = $("<img>")
+    medImage.attr("src", results[i].image.fixed_height.url)
+   
+     priceDiv.append(priceTag)
+     priceDiv.append(medImage)
+   $("#addmedication").text(priceDiv)
+    }
+
+  });
+
+
 });
 
 function clear() {
