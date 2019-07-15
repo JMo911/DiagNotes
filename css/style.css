@@ -1,9 +1,125 @@
-.jumbotron{
-    background-color: #ffffff;
-    max-height: 100px;
-    margin:0;
-    padding: 0;
+body {
+    font-family:sans-serif;
 }
 .headline {
-    text-align: -9999;
+    display: none;
 }
+.navbar-brand {
+    background-color: #ffffff;
+    margin:20px auto;
+    padding: 0;
+    width: 100%;
+}
+.navbar-brand img {
+    width:200px;
+    display:block;
+    padding:0;
+    margin:0 auto;
+    border: 0;
+}
+.navbar-brand .lead {
+    font-style:italic;
+    font-size: 0.75em;
+    text-align:center;
+    font-weight: 100;
+}
+.navbar {
+    background-color: #ffffff;
+    margin:0 auto;
+    padding: 0;
+    width: 400px;
+}
+.navbar-nav {
+    clear:both;
+    flex-direction: row;
+    margin: 0 auto;
+}
+.navbar-nav li {
+    padding: 5px 20px;
+    background-color: #89e6e1;
+}
+.navbar-nav li:hover {
+    filter: brightness(90%);
+}
+.navbar-nav li.active {
+    filter: brightness(90%);
+}
+.border-right {
+    border-right: 1px solid #000000!important;
+}
+#main-content p {
+    width:300px;
+    margin:50px auto 30px auto;
+    text-align: center;
+}
+/* form */
+form {
+    display: block;
+    width: 300px;
+    margin: 0 auto;
+}
+/* form fields */
+.form-field {
+    margin-bottom: 10px;
+}
+.form-field.last {
+    margin-bottom: 30px;
+}
+.form-field label {
+    margin: 5px 0 0 0;
+    font-size:1.2em;
+}
+.form-field input {
+    width: 100%;
+    border: 2px solid #89e6e1;
+    padding: 10px;
+}
+.form-field span {
+    margin: 5px 0;
+    color:red;
+    font-size:0.8em;
+}
+.form-field span.error {
+    display:none;
+}
+.form-field span.error-show {
+    display:inline-block;
+}
+
+/* form buttons */
+#form-buttons {
+    width:100%;
+    text-align:center;
+}
+#form-buttons button {
+    width:150px;
+    margin:0 auto;
+    border: none;
+    padding: 15px 0;
+    margin-bottom: 10px;
+    cursor:pointer;
+}
+button#login-button {
+    background-color:#89e6e1;
+}
+button#login-button:hover {
+    filter: brightness(90%);
+}
+button#create-button {
+    background-color:#ebebeb;
+}
+button#create-button:hover {
+    filter: brightness(90%);
+}
+footer {
+    width:100%;
+    margin:20px auto;
+    text-align:center;
+}
+
+@media only screen and (max-width: 768px) {
+    ul.navbar-nav {
+        
+    }
+}
+
