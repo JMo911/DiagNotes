@@ -4,15 +4,14 @@ $(document).ready(function() {
  $.ajax({
      url: queryurl,
     method: "GET"
- }).then(function (response) {
-  var results = response.data;
-  for (var i = 0; i < results.length; i++) {
-    var jokes = results[i].setup;
-     
-     console.log(response);
-     $("#jokesHere").text(jokes);
-  }
- });
+}).then(function (response) {
+    console.log(response);
+  
+    $("#setup").text(response.setup);
+    $("#delivery").text(response.delivery);
+   
+  });
+
  try {
   var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   var recognition = new SpeechRecognition();
@@ -220,8 +219,49 @@ function deleteNote(dateTime) {
 }
 
 
+$("#submit").click( function(event) {
+  event.preventDefault();
+  $("#addmedication").empty()
+  var addmedication = $("#medication-input").val()
+  $("#addmedication").text(addmedication)
+  clear()
+  var medicationName = addmedication
+  var queryURL =                      + medicationName +
+  console.log(queryURL)
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+
+  .then(function(response) {
+    var results = response.data;
+    console.log(response.data)
+    for (var i = 0; i < results.length; i++){
+
+    var priceDiv = $("<div>");
+    var priceTag = $("<p>").text("Price: " + results[i].price);
+    
+    var medImage = $("<img>")
+    medImage.attr("src", results[i].image.fixed_height.url)
+   
+     priceDiv.append(priceTag)
+     priceDiv.append(medImage)
+   $("#addmedication").text(priceDiv)
+    }
+
+  });
+
+
+
+
+function clear() {
+  $('input[type="text"]').val('');
+  $('#medication-input').val('');
+};
 
 $("#notesContainer").append(notes);
+
 
 
 
@@ -236,7 +276,7 @@ $("#notesContainer").append(notes);
 //   noteDiv.append()
 //   $("#notesContainer").append(noteDiv);
 
-// });
+ });
 
 
 
