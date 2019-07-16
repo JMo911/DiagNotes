@@ -226,7 +226,7 @@ $("#submit").click( function(event) {
   $("#addmedication").text(addmedication)
   clear()
   var medicationName = addmedication
-  var queryURL =                      + medicationName +
+  var queryURL = "https://api.fda.gov/drug/label.json?search=" + medicationName + "&api_key=YfbsJ7YnoFpyh1HsPKea9VmisCfwmgFV2lpWKDJC"
   console.log(queryURL)
 
   $.ajax({
@@ -235,30 +235,18 @@ $("#submit").click( function(event) {
   })
 
   .then(function(response) {
-    var results = response.data;
-    console.log(response.data)
-    for (var i = 0; i < results.length; i++){
-
-    var priceDiv = $("<div>");
-    var priceTag = $("<p>").text("Price: " + results[i].price);
-    
-    var medImage = $("<img>")
-    medImage.attr("src", results[i].image.fixed_height.url)
-   
-     priceDiv.append(priceTag)
-     priceDiv.append(medImage)
-   $("#addmedication").text(priceDiv)
-    }
-
+    console.log(response.results[0])
+    $("#medicationReaction").text(response.results[0].adverse_reactions);
+    $("#medicationPurpose").text(response.results[0].purpose);
+    $("#medicationIngredients").text(response.results[0].active_ingredient);
+    $("#medicationDosage").text(response.results[0].dosage_and_administration);
+      
   });
 
+   
 
 
 
-function clear() {
-  $('input[type="text"]').val('');
-  $('#medication-input').val('');
-};
 
 $("#notesContainer").append(notes);
 
@@ -266,6 +254,15 @@ $("#notesContainer").append(notes);
 
 
 });
+
+function clear() {
+  $('input[type="text"]').val('');
+  $('#medication-input').val('');
+  $('#medicationReaction').empty();
+  $('#medicationPurpose').empty();
+  $('#medicationIngredients').empty();
+  $('#medicationDosage').empty();
+};
 
 //BEGINNING PERSISTENT CONVERSATION WORK - already in local storage (makes sense for this app)
 // var noteList=[];
