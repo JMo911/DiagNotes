@@ -5,7 +5,7 @@ var selectedDate = currentDate;
 var selectedDayBlock = null;
 var globalEventObj = {};
 
-var sidebar = document.getElementById("sidebar");
+// var sidebar = document.getElementById("sidebar");
 
 function createCalendar(date, side) {
    var currentDate = date;
@@ -51,11 +51,11 @@ function createCalendar(date, side) {
          if (selectedDayBlock == null && i == currentDate.getDate() || selectedDate.toDateString() == new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
             selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
 
-            document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
-               month: "long",
-               day: "numeric",
-               year: "numeric"
-            });
+            // document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
+            //    month: "long",
+            //    day: "numeric",
+            //    year: "numeric"
+            // });
 
             selectedDayBlock = currentDay;
             setTimeout(() => {
@@ -129,10 +129,10 @@ function addEvent(title, desc) {
 }
 
 function showEvents() {
-   let sidebarEvents = document.getElementById("sidebarEvents");
+   // let sidebarEvents = document.getElementById("sidebarEvents");
    let objWithDate = globalEventObj[selectedDate.toDateString()];
 
-   sidebarEvents.innerHTML = "";
+   // sidebarEvents.innerHTML = "";
 
    if (objWithDate) {
       let eventsCount = 0;
@@ -159,7 +159,7 @@ function showEvents() {
          markWrapper.appendChild(mark);
          eventContainer.appendChild(markWrapper);
 
-         sidebarEvents.appendChild(eventContainer);
+         // sidebarEvents.appendChild(eventContainer);
 
          eventsCount++;
       }
@@ -169,7 +169,7 @@ function showEvents() {
       let emptyMessage = document.createElement("div");
       emptyMessage.className = "empty-message";
       emptyMessage.innerHTML = "Sorry, no events to selected date";
-      sidebarEvents.appendChild(emptyMessage);
+      // sidebarEvents.appendChild(emptyMessage);
       let emptyFormMessage = document.getElementById("emptyFormTitle");
       emptyFormMessage.innerHTML = "No events now";
    }
@@ -195,11 +195,11 @@ gridTable.onclick = function (e) {
 
    showEvents();
 
-   document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric"
-   });
+   // document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
+   //    month: "long",
+   //    day: "numeric",
+   //    year: "numeric"
+   // });
 
 }
 
@@ -239,12 +239,12 @@ var firebaseConfig = {
 
 //every time appt is added, I need to grab patient name, date, and desription and store on firebase. 
 // Then render that data on the page in current format.
-// var globalObjectCopy;
+var globalObjectCopy;
 $("#addEventButton").on("click", function(event){
    event.preventDefault();
    var patientName=$("#patientNameInput").val().trim();
    var apptDescrip=$("#eventDescInput").val().trim();
-   // globalObjectCopy = globalEventObj;
+   globalObjectCopy = globalEventObj;
    // console.log(globalObjectCopy);
    var apptDate = selectedDate.toLocaleString("en-US", {
       month: "long",
@@ -262,7 +262,7 @@ var apptDetails = {
 
 database.ref().push(apptDetails);
 
-
+addForm.style.top = "100%";
 
 
 
@@ -317,6 +317,10 @@ addEventButton.onclick = function (e) {
       // console.log(newApptLink);
       // selectedDayBlock.appendChild(document.createElement("div")).className = "appt-details";
       // $(".appt-details").append(newApptLink);
+      $(".lighten-3").on("click", function(event){
+         event.preventDefault();
+         console.log(this);
+      });
    }
 
    let inputs = addForm.getElementsByTagName("input");

@@ -4,27 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Diagnotes - Appoinments</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--JQUERY CDN-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!--RESET-->
+    <link rel="stylesheet" href="css/reset.css">
+    <!--MY STYLE-->
+    <link rel="stylesheet" href="css/style.css">
     <title>Appoinment Page</title>
     <!-- Firebase References -->
   <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
 </head>
 <body>
-    <div class="container">
-
-        <div class="app"> 
-            <h2>DiagNotes</h2>
-            <div class="input-single">
-                <textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6" ></textarea>
-            </div>         
-            <button id="start-record-btn" title="Start Recording">Start</button>
-            <button id="pause-record-btn" title="Pause Recording">Pause</button>
-            <button id="save-note-btn" title="Save Note">Save Note</button>   
-          
-            
-          
-  
+    <header>
+        <div class="navbar-brand row">
+            <h1 class="headline">DiagNotes</h1>
+            <a class="navbar-image" href="index.html">
+                <img src="images/diagnotes-logo.jpg" alt="diagnotes logo">
+            </a>
+            <p class="lead">Save yourself time, be with your patients</p>
         </div>
+        <nav class="navbar navbar-expand-lg navbar-light row col-xs-12">
+            <!-- Our brand / logo -->
+            <ul class="navbar-nav row">
+                <!-- The links of our navbar -->
+                <li class="nav-item border-right">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item border-right">
+                    <a class="nav-link" href="caltemplate.html">Calendar</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="appoinment.html">Recorder</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="app"> 
+        <h2>DiagNotes</h2>
+        <div class="input-single">
+            <textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6" ></textarea>
+        </div>         
+        <button id="start-record-btn" title="Start Recording">Start</button>
+        <button id="pause-record-btn" title="Pause Recording">Pause</button>
+        <button id="save-note-btn" title="Save Note">Save Note</button> 
+    </div><!-- app -->
+
+    <div id="jokeHere"></div>
 
         <div id="notesContainer">
             <ul id="notes">
@@ -32,32 +63,13 @@
             </ul>
         </div>
   
-    </div>
-  
-  
-  <div id="jokeHere"></div>
-  
-  
-  
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-       <!--voice recorder-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--voice recorder-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
           
-      <!--BOOTSTRAP CDN-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-      <!--MY JAVASCRIPT-->
-      <script src="javascript/app.js"></script>
-  </body>
-  </html>
+    <!--BOOTSTRAP CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!--MY JAVASCRIPT-->
+    <script src="javascript/app.js"></script>
 </body>
 </html>
