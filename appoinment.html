@@ -45,57 +45,54 @@
         </nav>
     </header>
 
-
-        <div class="app"> 
-            <h2>DiagNotes</h2>
+    <div class="container appointment-page">
+       <div class="app"> 
+            <h2>Press Start to Record</h2>
             <div class="input-single">
-                <textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6" ></textarea>
-            </div>         
-            <button id="start-record-btn" title="Start Recording">Start</button>
-            <button id="pause-record-btn" title="Pause Recording">Pause</button>
-            <button id="save-note-btn" title="Save Note">Save Note</button>   
-          
+                <textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="10" ></textarea>
+            </div> 
+            <div class="buttons"> 
+                <button id="start-record-btn" title="Start Recording">Start</button>
+                <button id="pause-record-btn" title="Pause Recording">Pause</button>
+                <button id="save-note-btn" title="Save Note">Save Note</button>   
+            </div>
         </div>
-  
-  
-          <div id="notesContainer">
+        <div id="notesContainer">
+            <h3>My Recordings</h3>
             <ul id="notes">
                 
             </ul>
         </div>
-  
+
+        <h3>Got Jokes?</h3>
+        <div id="joke-container">
+            <div id="setup"></div>
+            <div id="delivery"></div>
+        </div>
+        
+        <h3>Medication Name</h3>
+        <form class="medication-name">
+            <input type="text" id="medication-input">
+            <input id="submit" type="submit" value="Search">
+            <br>
+            <div id="medicationReaction"></div>
+            <br>
+            <div id="medicationPurpose"></div>
+            <br>
+            <div id="medicationIngredients"></div>
+            <br>
+            <div id="medicationDosage"></div>
+        </form>
+
     </div>
-    <br>
-             
-  <div id="setup"></div>
-  <div id="delivery"></div>
-   
-  <form>
-    <label for="medication-input">Medication Name:</label>
-    <input type="text" id="medication-input">
-    <br>
-    <input id="submit" type="submit" value="Search">
-    <br>     
-</form>
+    <footer>&copy; 2019 DiagNotes</footer>
+    <!--voice recorder-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<br>
-
-<div id="medicationReaction"></div>
-<br>
-<div id="medicationPurpose"></div>
-<br>
-<div id="medicationIngredients"></div>
-<br>
-<div id="medicationDosage"></div>
-
-
-       <!--voice recorder-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-          
     <!--BOOTSTRAP CDN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
     <!--MY JAVASCRIPT-->
     <script src="javascript/app.js"></script>
 </body>
