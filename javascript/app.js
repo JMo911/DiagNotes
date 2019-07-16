@@ -252,11 +252,19 @@ $("#submit").click( function(event) {
 
   });
 
+
+
+
 function clear() {
   $('input[type="text"]').val('');
   $('#medication-input').val('');
 };
 $("#notesContainer").append(notes);
+
+
+
+
+
 
 
 
@@ -271,7 +279,7 @@ $("#notesContainer").append(notes);
 //   noteDiv.append()
 //   $("#notesContainer").append(noteDiv);
 
-// });
+ 
 
 
 

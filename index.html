@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DiagNotes</title>
-
+    <title>DiagNotes - Home</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!--JQUERY CDN-->
@@ -14,51 +14,68 @@
     <link rel="stylesheet" href="css/reset.css">
     <!--MY STYLE-->
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
-    <!--JUMBOTRON-->
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">DiagNotes</h1>
-          <p class="lead">Save yourself the time, be with your patients.</p>
-        </div>
-      </div>
 
   <div class="container">
+    <header>
+      <div class="navbar-brand row">
+        <h1 class="headline">DiagNotes</h1>
+        <a class="navbar-image" href="index.html">
+          <img src="images/diagnotes-logo.jpg" alt="diagnotes logo">
+        </a>
+        <p class="lead">Save yourself time, be with your patients</p>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light row col-xs-12">
+        <!-- Our brand / logo -->
+        
+        <ul class="navbar-nav row">
+          <!-- The links of our navbar -->
+          <li class="nav-item border-right active">
+            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item border-right">
+            <a class="nav-link" href="#">Calendar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Recorder</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
+    <div id="main-content">
+      <section>
+        <p>Login or Create an account</p>
+        <form id="login-form" action="">
+          <div class="form-field">
+            <label for="login-username">Username:</label><br>
+            <span class="error" id="usernameError">Username required (letters and numbers only)</span><br>
+            <input type="text" name="username" id="login-username">
+          </div>
+          <div class="form-field last">
+            <label for="login-password">Password:</label><br>
+            <span class="error" id="passwordError">Password required (letters and numbers only)</span><br>
+            <input type="text" name="password" id="login-password">
+          </div>
+          <div id="form-buttons">
+            <button id="login-button" type="submit">Login</button>
+            <button id="create-button">Create Account</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>   
+
+  <footer>&copy; 2019 DiagNotes</footer>
+  <!--voice recorder-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       
-        
-          
-        
-
-
-    
-
-  </div>
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-     <!--voice recorder-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
-    <!--BOOTSTRAP CDN-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!--MY JAVASCRIPT-->
-    <script src="javascript/app.js"></script>
+  <!--BOOTSTRAP CDN-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!--MY JAVASCRIPT-->
+  <!-- <script src="javascript/app.js"></script> -->
+  <script src="javascript/form-validation.js"></script>
 </body>
 </html>
