@@ -7,10 +7,16 @@ $(document).ready(function() {
    "role": "alert"
  });
  //RETRIEVE PATIENT NAME AND APPOINTMENT DATE FROM LOCAL STORAGE AND APPEND TO DIV
+ if(localStorage.getItem("currentPatientName")){
  var appointmentPatientName = localStorage.getItem("currentPatientName");
  var appointmentDate = localStorage.getItem("currentApptDate"); 
- appointmentInfoDiv.html("<p>Patient Name: " + appointmentPatientName + " · Appointment Date: " + appointmentDate);
+ appointmentInfoDiv.html("<p>Patient Name: " + appointmentPatientName + " · Appointment Date: " + appointmentDate + "</p>");
  $("#appointmentInfo").append(appointmentInfoDiv);
+ } else {
+  appointmentInfoDiv.html("<p>Please go back to calendar and select an appointment before proceeding.</p>");
+  $("#appointmentInfo").append(appointmentInfoDiv);
+ }
+
 
 
  var queryurl="https://sv443.net/jokeapi/category/Miscellaneous?blacklistFlags=religious,nsfw,political"
