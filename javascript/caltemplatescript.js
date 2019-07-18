@@ -288,7 +288,7 @@ database.ref().on("child_added", function(childSnapshot){
       "class": "list-group-item list-group-item-action"
       });
    newApptLink.append("<p>" + firepName + ": " + fireDate + " - " + fireDescrip + "</p>");
-   $("#apptList").append(newApptLink);
+   $("#apptList").prepend(newApptLink);
 });
 
 

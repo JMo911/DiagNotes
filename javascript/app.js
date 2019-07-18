@@ -9,7 +9,7 @@ $(document).ready(function() {
   
     $("#setup").text(response.setup);
     $("#delivery").text(response.delivery);
-   
+    $("#joke").text(response.joke);
   });
 
  try {
@@ -225,22 +225,25 @@ function deleteNote(dateTime) {
   localStorage.removeItem('note-' + dateTime); 
 }
 
-
+//Event listner for submit button for our medication information form//
 $("#submit").click( function(event) {
   event.preventDefault();
   $("#addmedication").empty()
+  var newMedication = $("#medication-input").val()
   var addmedication = $("#medication-input").val()
   $("#addmedication").text(addmedication)
+  $("#newMedication").text(newMedication)
   clear()
+  //declaring variable for api search. This searches for the name of medication.//
   var medicationName = addmedication
   var queryURL = "https://api.fda.gov/drug/label.json?search=" + medicationName + "&api_key=YfbsJ7YnoFpyh1HsPKea9VmisCfwmgFV2lpWKDJC"
   console.log(queryURL)
-
+//ajax call using our queryURL and medication name//
   $.ajax({
     url: queryURL,
     method: "GET"
   })
-
+//This is the response from the call and the info is then displayed on our page//
   .then(function(response) {
     console.log(response.results[0])
     $("#medicationReaction").text(response.results[0].adverse_reactions);
@@ -261,7 +264,7 @@ $("#notesContainer").append(notes);
 
 
 });
-
+//This function clears the input value and empties the divs each time new medication is added//
 function clear() {
   $('input[type="text"]').val('');
   $('#medication-input').val('');
