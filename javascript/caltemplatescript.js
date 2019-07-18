@@ -275,14 +275,18 @@ var firepName;
 var fireDescrip;
 var fireDate;
 var newApptLink;
-database.ref().on("child_added", function(childSnapshot, ChildKey){
-   console.log(ChildKey);
+database.ref().on("child_added", function(childSnapshot){
+   // console.log(ChildKey);
    firepName = childSnapshot.val().patientName;
    fireDescrip = childSnapshot.val().apptDescrip;
    fireDate = childSnapshot.val().apptDate;
    newApptLink = $("<a>");
-   newApptLink.attr("href", "appoinment.html");
-   newApptLink.addClass("list-group-item list-group-item-action");
+
+   // console.log(childSnapshot.key);
+   newApptLink.attr({"href": "appoinment.html",
+      "data-fireChildKey": childSnapshot.key,
+      "class": "list-group-item list-group-item-action"
+      });
    newApptLink.append("<p>" + firepName + ": " + fireDate + " - " + fireDescrip + "</p>");
    $("#apptList").prepend(newApptLink);
 });
@@ -296,6 +300,7 @@ database.ref().on("child_added", function(childSnapshot, ChildKey){
 
 var addEventButton = document.getElementById("addEventButton");
 addEventButton.onclick = function (e) {
+   
    let title = firepName;
    let desc = fireDescrip;
 
@@ -319,7 +324,7 @@ addEventButton.onclick = function (e) {
       // $(".appt-details").append(newApptLink);
       $(".lighten-3").on("click", function(event){
          event.preventDefault();
-         console.log(this);
+         // console.log(this);
       });
    }
 
@@ -332,3 +337,12 @@ addEventButton.onclick = function (e) {
       labels[i].className = "";
    }
 }
+
+$(document).on("click", ".list-group > a", function(event){
+   // event.preventDefault();
+
+
+   var currentFireKey = $(this).attr("data-fireChildKey");
+   localStorage.setItem("currentFireKey", currentFireKey);
+
+});
