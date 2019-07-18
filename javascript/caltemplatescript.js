@@ -6,6 +6,7 @@ var selectedDate = currentDate;
 var selectedDayBlock = null;
 var globalEventObj = {};
 
+//VISUALLY SHOW WHICH DATE HAS BEEN SELECTED BY USING JQUERYUI TO FADE IN/OUT
 $(document).on("click", ".row > .col", function(){
    $(".row > .col").animate({"backgroundColor":"#FFFFFF"});
    $(this).animate({"backgroundColor":"#8edaa9"});
