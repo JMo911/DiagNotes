@@ -5,7 +5,7 @@ $(document).ready(function() {
      url: queryurl,
     method: "GET"
 }).then(function (response) {
-    console.log(response);
+    // console.log(response);
   
     $("#setup").text(response.setup);
     $("#delivery").text(response.delivery);
@@ -22,6 +22,8 @@ catch(e) {
   $('.app').hide();
 }
 
+var noteFireKey = localStorage.getItem("currentFireKey");
+var keyLength= noteFireKey.length;
 
 var noteTextarea = $('#note-textarea');
 var instructions = $('#recording-instructions');
@@ -31,7 +33,7 @@ var noteContent = '';
 
 // Get all notes from previous sessions and display them.
 var notes = getAllNotes();
-
+// console.log(notes);
 renderNotes(notes);
 
 
@@ -172,6 +174,7 @@ function readOutLoud(message) {
 ------------------------------*/
 
 function renderNotes(notes) {
+  // console.log(notes);
   var html = '';
   if(notes.length) {
     notes.forEach(function(note) {
@@ -191,12 +194,10 @@ function renderNotes(notes) {
   notesList.html(html);
 }
 
-var noteFireKey;
-var keyLength;
+
 function saveNote(dateTime, content) {
-  noteFireKey = localStorage.getItem("currentFireKey");
   localStorage.setItem(noteFireKey +' note-' + dateTime, content);
-  keyLength = noteFireKey.length;
+
 }
 
 
@@ -205,7 +206,7 @@ function getAllNotes() {
   var key;
   for (var i = 0; i < localStorage.length; i++) {
     key = localStorage.key(i);
-    
+    // console.log(key);
 
     if(key.substring(0,keyLength + 6) == noteFireKey +' note-') {
       notes.push({
@@ -214,6 +215,8 @@ function getAllNotes() {
       });
     } 
   }
+  // console.log(notes);
+  // console.log(localStorage.length);
   return notes;
 }
 
