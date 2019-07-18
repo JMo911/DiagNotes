@@ -1,4 +1,16 @@
 $(document).ready(function() {
+  $("#appointmentInfo").empty(); 
+ var appointmentInfoDiv = $("<div>");  
+ appointmentInfoDiv.attr({
+   "class": "alert alert-info",
+   "role": "alert"
+ })
+ var appointmentPatientName = localStorage.getItem("currentPatientName");
+ var appointmentDate = localStorage.getItem("currentApptDate"); 
+ appointmentInfoDiv.html("<p>Patient Name: " + appointmentPatientName + " Appointment Date: " + appointmentDate);
+ $("#appointmentInfo").append(appointmentInfoDiv);
+
+
  var queryurl="https://sv443.net/jokeapi/category/Miscellaneous?blacklistFlags=religious,nsfw,political"
 
  $.ajax({

@@ -256,6 +256,8 @@ database.ref().on("child_added", function(childSnapshot){
    newApptLink = $("<a>");
    newApptLink.attr({"href": "appoinment.html",
       "data-fireChildKey": childSnapshot.key,
+      "data-patientName": childSnapshot.val().patientName,
+      "data-apptDate": childSnapshot.val().apptDate,
       "class": "list-group-item list-group-item-action"
       });
    newApptLink.append("<p>" + firepName + ": " + fireDate + " - " + fireDescrip + "</p>");
@@ -308,5 +310,11 @@ addEventButton.onclick = function (e) {
 $(document).on("click", ".list-group > a", function(){
    var currentFireKey = $(this).attr("data-fireChildKey");
    localStorage.setItem("currentFireKey", currentFireKey);
+
+   var currentPatientName = $(this).attr("data-patientName");
+   localStorage.setItem("currentPatientName", currentPatientName);
+
+   var currentApptDate = $(this).attr("data-apptDate");
+   localStorage.setItem("currentApptDate", currentApptDate);
 
 });
