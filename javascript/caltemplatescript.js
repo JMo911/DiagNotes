@@ -283,8 +283,7 @@ database.ref().on("child_added", function(childSnapshot){
    newApptLink = $("<a>");
 
    // console.log(childSnapshot.key);
-
-   newApptLink.attr({"href": "#",
+   newApptLink.attr({"href": "appoinment.html",
       "data-fireChildKey": childSnapshot.key,
       "class": "list-group-item list-group-item-action"
       });
@@ -340,20 +339,10 @@ addEventButton.onclick = function (e) {
 }
 
 $(document).on("click", ".list-group > a", function(event){
-   // localStorage.clear();
-   event.preventDefault();
-   // console.log("hello world");
-   // console.log("-------");
+   // event.preventDefault();
 
-
-   // var fireKey = $(this)[0].attributes[1];
-   // console.log(fireKey);
 
    var currentFireKey = $(this).attr("data-fireChildKey");
    localStorage.setItem("currentFireKey", currentFireKey);
-   // var formattedkey = JSON.stringify(fireKey);
-   // console.log(formattedkey)
-   // localStorage.setItem("fireKey", fireKey);
-   // console.log(fireKey);
-   // console.log("-------");
+
 });

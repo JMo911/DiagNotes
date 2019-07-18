@@ -31,6 +31,7 @@ var noteContent = '';
 
 // Get all notes from previous sessions and display them.
 var notes = getAllNotes();
+
 renderNotes(notes);
 
 
@@ -190,9 +191,12 @@ function renderNotes(notes) {
   notesList.html(html);
 }
 
-
+var noteFireKey;
+var keyLength;
 function saveNote(dateTime, content) {
-  localStorage.setItem('note-' + dateTime, content);
+  noteFireKey = localStorage.getItem("currentFireKey");
+  localStorage.setItem(noteFireKey +' note-' + dateTime, content);
+  keyLength = noteFireKey.length;
 }
 
 
@@ -203,7 +207,7 @@ function getAllNotes() {
     key = localStorage.key(i);
     
 
-    if(key.substring(0,5) == 'note-') {
+    if(key.substring(0,keyLength + 6) == noteFireKey +' note-') {
       notes.push({
         date: key.replace('note-',''),
         content: localStorage.getItem(localStorage.key(i))
