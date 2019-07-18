@@ -113,35 +113,44 @@ button#create-button:hover {
 }
 .container.appointment-page {
     margin: 20px auto;
-    width: 800px;
+    width: 300px;
     text-align: center;
+    padding:0;
+}
+.app {
+    width:300px;
+    margin:0 auto;
 }
 .appointment-page textarea {
-    width:400px;
+    width:300px;
     padding: 10px 20px;
     font-weight:100;
     border: 2px solid #89e6e1;
 }
 .appointment-page h2 {
-    width: 400px;
+    width: 300px;
     margin: 40px auto 10px auto;
     font-size: 1.3em;
     font-weight: 300;
+    text-align:center;
 }
 .appointment-page .buttons {
-    width: 400px;
+    width: 300px;
     margin:5px auto 20px auto;
+    overflow:hidden;
 }
 .appointment-page button {
     border:none;
-    padding: 15px 20px;
     color: #000000;
-    width:125px;
     cursor:pointer;
 }
 button#start-record-btn {
     float:left;
     background-color: #89e6e1;
+    margin-right: 15px;
+    padding: 23px 15px;
+    font-size:1em;
+    width:30%;
 }
 button#start-record-btn:hover {
     filter: brightness(90%);
@@ -149,6 +158,10 @@ button#start-record-btn:hover {
 button#pause-record-btn {
     background-color: #ebebeb;
     color:#000000;
+    float:left;
+    padding: 24.5px 15px;
+    width:30%;
+    font-size:1em;
 }
 button#pause-record-btn:hover {
     filter: brightness(90%);
@@ -157,36 +170,38 @@ button#save-note-btn {
     float:right;
     background-color: #da0300;
     color:#ffffff;
+    padding: 16.5px 15px;
+    width:30%;
 }
 button#save-note-btn:hover {
     filter: brightness(90%);
 }
 .appointment-page h3 {
-    width: 400px;
+    width: 300px;
     margin: 30px auto 10px auto;
     font-size: 1.3em;
     font-weight: 300;
 }
 
 #notesContainer {
-    width: 400px;
+    width: 300px;
     margin: auto;
 }
 li.note {
-    width: 400px;
+    width: 300px;
     margin: 0 auto 20px auto;
 }
 #joke-container {
     background-color: #ebebeb;
     padding: 20px;
     margin: 10px auto 20px auto;
-    width: 400px;
+    width: 300px;
 }
 #joke-container #setup {
     margin-bottom: 15px;
 }
 form.medication-name {
-    width:400px;
+    width:300px;
     margin:0 auto;
     background-color: #89e6e1;
     padding: 20px;
@@ -216,8 +231,27 @@ footer {
 }
 
 @media only screen and (min-width: 768px) {
-    .navbar {
+    .navbar,
+    #main-content p,
+    form,
+    .container.appointment-page,
+    .app,
+    .appointment-page textarea,
+    .appointment-page h2,
+    .appointment-page .buttons,
+    .appointment-page h3,
+    #notesContainer,
+    li.note,
+    #joke-container,
+    form.medication-name {
         width: 400px;
+    }
+
+    button#pause-record-btn {
+        padding: 23px 15px;
+    }
+    button#save-note-btn {
+        padding: 23px 15px;
     }
 }
 
