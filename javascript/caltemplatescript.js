@@ -6,6 +6,11 @@ var selectedDate = currentDate;
 var selectedDayBlock = null;
 var globalEventObj = {};
 
+$(document).on("click", ".row > .col", function(){
+   $(".row > .col").animate({"backgroundColor":"#FFFFFF"});
+   $(this).animate({"backgroundColor":"#8edaa9"});
+});
+
 //IMPORT CALENDAR TEMPLATE FROM CODEPEN
 function createCalendar(date, side) {
    var currentDate = date;
