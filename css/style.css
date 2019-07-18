@@ -27,7 +27,7 @@ body {
     background-color: #ffffff;
     margin:0 auto;
     padding: 0;
-    width: 400px;
+    width: 300px;
 }
 .navbar-nav {
     clear:both;
@@ -215,9 +215,9 @@ footer {
     text-align:center;
 }
 
-@media only screen and (max-width: 768px) {
-    ul.navbar-nav {
-        
+@media only screen and (min-width: 768px) {
+    .navbar {
+        width: 400px;
     }
 }
 
