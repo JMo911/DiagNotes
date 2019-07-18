@@ -1,13 +1,15 @@
 $(document).ready(function() {
-  $("#appointmentInfo").empty(); 
+  //CREATE DIV TO RENDER THE SELECTED APPOINTMENT'S PATIENT NAME AND DATE
+ $("#appointmentInfo").empty(); 
  var appointmentInfoDiv = $("<div>");  
  appointmentInfoDiv.attr({
    "class": "alert alert-info",
    "role": "alert"
- })
+ });
+ //RETRIEVE PATIENT NAME AND APPOINTMENT DATE FROM LOCAL STORAGE AND APPEND TO DIV
  var appointmentPatientName = localStorage.getItem("currentPatientName");
  var appointmentDate = localStorage.getItem("currentApptDate"); 
- appointmentInfoDiv.html("<p>Patient Name: " + appointmentPatientName + " Appointment Date: " + appointmentDate);
+ appointmentInfoDiv.html("<p>Patient Name: " + appointmentPatientName + " · Appointment Date: " + appointmentDate);
  $("#appointmentInfo").append(appointmentInfoDiv);
 
 
@@ -219,7 +221,7 @@ function getAllNotes() {
 
     if(key.substring(0,keyLength + 6) == noteFireKey +' note-') {
       notes.push({
-        date: key.replace('note-',''),
+        date: key.replace(noteFireKey + ' note-',''),
         content: localStorage.getItem(localStorage.key(i))
       });
     } 
