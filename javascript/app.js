@@ -9,7 +9,7 @@ $(document).ready(function() {
   
     $("#setup").text(response.setup);
     $("#delivery").text(response.delivery);
-   
+    $("#joke").text(response.joke);
   });
 
  try {
