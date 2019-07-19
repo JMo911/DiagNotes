@@ -270,13 +270,6 @@ database.ref().on("child_added", function(childSnapshot){
    $("#apptList").prepend(newApptLink);
 });
 
-
-
-
-
-
-
-
 var addEventButton = document.getElementById("addEventButton");
 addEventButton.onclick = function (e) {
    
