@@ -88,7 +88,8 @@ form {
 
 /* form buttons */
 #form-buttons {
-    width:100%;
+    width:300px;
+    margin:0 auto;
     text-align:center;
 }
 #form-buttons button {
@@ -113,35 +114,44 @@ button#create-button:hover {
 }
 .container.appointment-page {
     margin: 20px auto;
-    width: 800px;
+    width: 300px;
     text-align: center;
+    padding:0;
+}
+.app {
+    width:300px;
+    margin:0 auto;
 }
 .appointment-page textarea {
-    width:400px;
+    width:300px;
     padding: 10px 20px;
     font-weight:100;
     border: 2px solid #89e6e1;
 }
 .appointment-page h2 {
-    width: 400px;
+    width: 300px;
     margin: 40px auto 10px auto;
     font-size: 1.3em;
     font-weight: 300;
+    text-align:center;
 }
 .appointment-page .buttons {
-    width: 400px;
+    width: 300px;
     margin:5px auto 20px auto;
+    overflow:hidden;
 }
 .appointment-page button {
     border:none;
-    padding: 15px 20px;
     color: #000000;
-    width:125px;
     cursor:pointer;
 }
 button#start-record-btn {
     float:left;
     background-color: #89e6e1;
+    margin-right: 5%;
+    padding: 24.5px 15px;
+    font-size:1em;
+    width:30%;
 }
 button#start-record-btn:hover {
     filter: brightness(90%);
@@ -149,6 +159,10 @@ button#start-record-btn:hover {
 button#pause-record-btn {
     background-color: #ebebeb;
     color:#000000;
+    float:left;
+    padding: 24.5px 15px;
+    width:30%;
+    font-size:1em;
 }
 button#pause-record-btn:hover {
     filter: brightness(90%);
@@ -157,44 +171,76 @@ button#save-note-btn {
     float:right;
     background-color: #da0300;
     color:#ffffff;
+    padding: 16.5px 15px;
+    width:30%;
 }
 button#save-note-btn:hover {
     filter: brightness(90%);
 }
 .appointment-page h3 {
-    width: 400px;
     margin: 30px auto 10px auto;
     font-size: 1.3em;
     font-weight: 300;
 }
 
 #notesContainer {
-    width: 400px;
-    margin: auto;
+    width: 300px;
+    margin: 50px auto 80px auto;
 }
-li.note {
-    width: 400px;
-    margin: 0 auto 20px auto;
+#notes li.note {
+    background-color: #ebebeb;
+    padding:10px;
+    margin:10px 0;
 }
+#notes li.note:hover {
+    filter: brightness(90%);
+}
+#notes span.date {
+    margin-bottom:20px;
+}
+
 #joke-container {
     background-color: #ebebeb;
-    padding: 20px;
-    margin: 10px auto 20px auto;
-    width: 400px;
+    padding: 10px 10px 20px 10px;
+    margin: 50px auto 30px auto;
+    width: 300px;
 }
+#joke-container h3 {
+    margin: 0 auto 20px auto;
+    background-color: #fff;
+    padding: 10px 0;
+}
+
 #joke-container #setup {
     margin-bottom: 15px;
 }
 form.medication-name {
-    width:400px;
+    width:300px;
     margin:0 auto;
     background-color: #89e6e1;
-    padding: 20px;
+    padding: 10px 10px 20px 10px;
+}
+form.medication-name h3 {
+    margin: 0 auto 20px auto;
+    background-color: #fff;
+    padding: 10px 0;
+}
+#newMedication {
+    text-transform: uppercase;
 }
 #medication-input {
     border:0;
     margin-top: 5px;
     font-weight: 100;
+    padding:9px;
+}
+.medication-name #submit {
+    background-color:#ebebeb;
+    padding:10px;
+    border:0;
+}
+.medication-name #submit:hover {
+    filter:brightness(90%);
 }
 form.medication-name img {
     margin-top: 20px;
@@ -216,8 +262,27 @@ footer {
 }
 
 @media only screen and (min-width: 768px) {
-    .navbar {
+    .navbar,
+    #main-content p,
+    .container.appointment-page,
+    .app,
+    .appointment-page textarea,
+    .appointment-page h2,
+    .appointment-page .buttons,
+    #notesContainer,
+    li.note,
+    #joke-container,
+    form.medication-name {
         width: 400px;
+    }
+    button#start-record-btn {
+        padding: 20px 15px;
+    }
+    button#pause-record-btn {
+        padding: 20px 15px;
+    }
+    button#save-note-btn {
+        padding: 20px 15px;
     }
 }
 
