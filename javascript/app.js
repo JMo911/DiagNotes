@@ -1,12 +1,30 @@
 $(document).ready(function() {
+  //CREATE DIV TO RENDER THE SELECTED APPOINTMENT'S PATIENT NAME AND DATE
+ $("#appointmentInfo").empty(); 
+ var appointmentInfoDiv = $("<div>");  
+ appointmentInfoDiv.attr({
+   "class": "alert alert-info",
+   "role": "alert"
+ });
+ //RETRIEVE PATIENT NAME AND APPOINTMENT DATE FROM LOCAL STORAGE AND APPEND TO DIV
+ if(localStorage.getItem("currentPatientName")){
+ var appointmentPatientName = localStorage.getItem("currentPatientName");
+ var appointmentDate = localStorage.getItem("currentApptDate"); 
+ appointmentInfoDiv.html("<p>Patient Name: " + appointmentPatientName + " · Appointment Date: " + appointmentDate + "</p>");
+ $("#appointmentInfo").append(appointmentInfoDiv);
+ } else {
+  appointmentInfoDiv.html("<p>Please go back to calendar and select an appointment before proceeding.</p>");
+  $("#appointmentInfo").append(appointmentInfoDiv);
+ }
+
+
+
  var queryurl="https://sv443.net/jokeapi/category/Miscellaneous?blacklistFlags=religious,nsfw,political"
 
  $.ajax({
      url: queryurl,
     method: "GET"
 }).then(function (response) {
-    // console.log(response);
-  
     $("#setup").text(response.setup);
     $("#delivery").text(response.delivery);
     $("#joke").text(response.joke);
@@ -31,7 +49,7 @@ var notesList = $('ul#notes');
 
 var noteContent = '';
 
-// Get all notes from previous sessions and display them.
+// GET ALL NOTE SNIPPETS FOR THIS APPOINTMENT AND DISPLAY THEM
 var notes = getAllNotes();
 // console.log(notes);
 renderNotes(notes);
@@ -194,29 +212,26 @@ function renderNotes(notes) {
   notesList.html(html);
 }
 
-
+//ADD FIREBASE KEY TO NOTES TO SERVE AS UNIQUE IDENTIFIER PER APPOINTMENT
 function saveNote(dateTime, content) {
   localStorage.setItem(noteFireKey +' note-' + dateTime, content);
-
 }
 
-
+//DYNAMICALLY ADJUST THE CONDITIONAL TO 
+//ENSURE APPENDED NOTES MATCH THIS APPOINTMENTS UNIQUE KEY
 function getAllNotes() {
   var notes = [];
   var key;
   for (var i = 0; i < localStorage.length; i++) {
     key = localStorage.key(i);
-    // console.log(key);
 
     if(key.substring(0,keyLength + 6) == noteFireKey +' note-') {
       notes.push({
-        date: key.replace('note-',''),
+        date: key.replace(noteFireKey + ' note-',''),
         content: localStorage.getItem(localStorage.key(i))
       });
     } 
   }
-  // console.log(notes);
-  // console.log(localStorage.length);
   return notes;
 }
 
@@ -253,15 +268,8 @@ $("#submit").click( function(event) {
       
   });
 
-   
-
-
-
-
+//DISPLAY NOTES ON THE PAGE
 $("#notesContainer").append(notes);
-
-
-
 
 });
 //This function clears the input value and empties the divs each time new medication is added//
@@ -272,83 +280,11 @@ function clear() {
   $('#medicationPurpose').empty();
   $('#medicationIngredients').empty();
   $('#medicationDosage').empty();
-};
-
-//BEGINNING PERSISTENT CONVERSATION WORK - already in local storage (makes sense for this app)
-// var noteList=[];
+  };
 
 
-// $("#save-note-btn").on("click", function(){
-//   var noteDiv = $("<div>");
-//   noteDiv.append()
-//   $("#notesContainer").append(noteDiv);
-
- });
+});
+//END OF DOCUMENT READY FUNCTION
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var firebaseConfig = {
-//   apiKey: "AIzaSyDzhSWIeHaVKr2ipKn4kQYXUI-_d_TnE6I",
-//   authDomain: "diagnotes-project-1.firebaseapp.com",
-//   databaseURL: "https://diagnotes-project-1.firebaseio.com",
-//   projectId: "diagnotes-project-1",
-//   storageBucket: "",
-//   messagingSenderId: "227854326970",
-//   appId: "1:227854326970:web:aab38cfa0ff6ff62"
-// };
-// // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-// var database = firebase.database();
-
-// $("#save-note-btn").on("click", function(event){
-//   event.preventDefault();
-//   var conv="";
-//   conv=$("#note-textarea").val();
-
-
-
-// //SETTING UP OBJECT TO PUSH TO FIREBASE
-// var conversation = {
-//   conversation: conv
-// };
-
-// database.ref().push(conversation);
-
-// });
-// //END OF FIREBASE STORAGE ON CLICK EVENT
-// var dataConv;
-// database.ref().on("child_added", function(childSnapshot){
-//   // $("#note-textarea").val() = "";
-//   dataConv = childSnapshot.val().conversation;
-//   $("#note-textarea").append(dataConv);
-// });

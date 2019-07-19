@@ -1,3 +1,4 @@
+//SET ALL GLOBAL VARIABLES
 var calendar = document.getElementById("calendar-table");
 var gridTable = document.getElementById("table-body");
 var currentDate = new Date();
@@ -5,8 +6,13 @@ var selectedDate = currentDate;
 var selectedDayBlock = null;
 var globalEventObj = {};
 
-// var sidebar = document.getElementById("sidebar");
+//VISUALLY SHOW WHICH DATE HAS BEEN SELECTED BY USING JQUERYUI TO FADE IN/OUT
+$(document).on("click", ".row > .col", function(){
+   $(".row > .col").animate({"backgroundColor":"#FFFFFF"});
+   $(this).animate({"backgroundColor":"#8edaa9"});
+});
 
+//IMPORT CALENDAR TEMPLATE FROM CODEPEN
 function createCalendar(date, side) {
    var currentDate = date;
    var startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
@@ -33,8 +39,8 @@ function createCalendar(date, side) {
       newTr.className = "row";
       var currentTr = gridTable.appendChild(newTr);
 
-      for (let i = 1; i < startDate.getDay(); i++) {
-         let emptyDivCol = document.createElement("div");
+      for (var i = 1; i < startDate.getDay(); i++) {
+         var emptyDivCol = document.createElement("div");
          emptyDivCol.className = "col empty-day";
          currentTr.appendChild(emptyDivCol);
       }
@@ -42,20 +48,14 @@ function createCalendar(date, side) {
       var lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
       lastDay = lastDay.getDate();
 
-      for (let i = 1; i <= lastDay; i++) {
+      for (var i = 1; i <= lastDay; i++) {
          if (currentTr.children.length >= 7) {
             currentTr = gridTable.appendChild(addNewRow());
          }
-         let currentDay = document.createElement("div");
+         var currentDay = document.createElement("div");
          currentDay.className = "col";
          if (selectedDayBlock == null && i == currentDate.getDate() || selectedDate.toDateString() == new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
             selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
-
-            // document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
-            //    month: "long",
-            //    day: "numeric",
-            //    year: "numeric"
-            // });
 
             selectedDayBlock = currentDay;
             setTimeout(() => {
@@ -67,10 +67,10 @@ function createCalendar(date, side) {
 
          //show marks & appt links
          if (globalEventObj[new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()]) {
-            let eventMark = document.createElement("div");
+            var eventMark = document.createElement("div");
             eventMark.className = "day-mark";
             currentDay.appendChild(eventMark);
-            let newApptLink = document.createElement("div");
+            var newApptLink = document.createElement("div");
             newApptLink.className = "appt-link";
             currentDay.appendChild(newApptLink);
 
@@ -79,8 +79,8 @@ function createCalendar(date, side) {
          currentTr.appendChild(currentDay);
       }
 
-      for (let i = currentTr.getElementsByTagName("div").length; i < 7; i++) {
-         let emptyDivCol = document.createElement("div");
+      for (var i = currentTr.getElementsByTagName("div").length; i < 7; i++) {
+         var emptyDivCol = document.createElement("div");
          emptyDivCol.className = "col empty-day";
          currentTr.appendChild(emptyDivCol);
       }
@@ -92,7 +92,7 @@ function createCalendar(date, side) {
       }
 
       function addNewRow() {
-         let node = document.createElement("div");
+         var node = document.createElement("div");
          node.className = "row";
          return node;
       }
@@ -129,21 +129,18 @@ function addEvent(title, desc) {
 }
 
 function showEvents() {
-   // let sidebarEvents = document.getElementById("sidebarEvents");
-   let objWithDate = globalEventObj[selectedDate.toDateString()];
-
-   // sidebarEvents.innerHTML = "";
+   var objWithDate = globalEventObj[selectedDate.toDateString()];
 
    if (objWithDate) {
-      let eventsCount = 0;
+      var eventsCount = 0;
       for (key in globalEventObj[selectedDate.toDateString()]) {
-         let eventContainer = document.createElement("div");
+         var eventContainer = document.createElement("div");
          eventContainer.className = "eventCard";
 
-         let eventHeader = document.createElement("div");
+         var eventHeader = document.createElement("div");
          eventHeader.className = "eventCard-header";
 
-         let eventDescription = document.createElement("div");
+         var eventDescription = document.createElement("div");
          eventDescription.className = "eventCard-description";
 
          eventHeader.append(document.createTextNode(key));
@@ -152,25 +149,21 @@ function showEvents() {
          eventDescription.appendChild(document.createTextNode(objWithDate[key]));
          eventContainer.appendChild(eventDescription);
 
-         let markWrapper = document.createElement("div");
+         var markWrapper = document.createElement("div");
          markWrapper.className = "eventCard-mark-wrapper";
-         let mark = document.createElement("div");
+         var mark = document.createElement("div");
          mark.classList = "eventCard-mark";
          markWrapper.appendChild(mark);
          eventContainer.appendChild(markWrapper);
-
-         // sidebarEvents.appendChild(eventContainer);
-
          eventsCount++;
       }
-      let emptyFormMessage = document.getElementById("emptyFormTitle");
+      var emptyFormMessage = document.getElementById("emptyFormTitle");
       emptyFormMessage.innerHTML = `${eventsCount} events now`;
    } else {
-      let emptyMessage = document.createElement("div");
+      var emptyMessage = document.createElement("div");
       emptyMessage.className = "empty-message";
       emptyMessage.innerHTML = "Sorry, no events to selected date";
-      // sidebarEvents.appendChild(emptyMessage);
-      let emptyFormMessage = document.getElementById("emptyFormTitle");
+      var emptyFormMessage = document.getElementById("emptyFormTitle");
       emptyFormMessage.innerHTML = "No events now";
    }
 }
@@ -190,17 +183,9 @@ gridTable.onclick = function (e) {
    selectedDayBlock = e.target;
    selectedDayBlock.classList.add("blue");
    selectedDayBlock.classList.add("lighten-3");
-
    selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), parseInt(e.target.innerHTML));
 
    showEvents();
-
-   // document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
-   //    month: "long",
-   //    day: "numeric",
-   //    year: "numeric"
-   // });
-
 }
 
 var changeFormButton = document.getElementById("changeFormButton");
@@ -212,12 +197,12 @@ changeFormButton.onclick = function (e) {
 var cancelAdd = document.getElementById("cancelAdd");
 cancelAdd.onclick = function (e) {
    addForm.style.top = "100%";
-   let inputs = addForm.getElementsByTagName("input");
-   for (let i = 0; i < inputs.length; i++) {
+   var inputs = addForm.getElementsByTagName("input");
+   for (var i = 0; i < inputs.length; i++) {
       inputs[i].value = "";
    }
-   let labels = addForm.getElementsByTagName("label");
-   for (let i = 0; i < labels.length; i++) {
+   var labels = addForm.getElementsByTagName("label");
+   for (var i = 0; i < labels.length; i++) {
       labels[i].className = "";
    }
 }
@@ -237,15 +222,14 @@ var firebaseConfig = {
  var database = firebase.database();
 
 
-//every time appt is added, I need to grab patient name, date, and desription and store on firebase. 
-// Then render that data on the page in current format.
+//STORE PATIENT NAME, APPOINTMENT DESCRIPTION, AND APPOINTMENT DATE IN FIREBASE
+//EVERY TIME AN APPOINTMENT IS SCHEDULED
 var globalObjectCopy;
 $("#addEventButton").on("click", function(event){
    event.preventDefault();
    var patientName=$("#patientNameInput").val().trim();
    var apptDescrip=$("#eventDescInput").val().trim();
    globalObjectCopy = globalEventObj;
-   // console.log(globalObjectCopy);
    var apptDate = selectedDate.toLocaleString("en-US", {
       month: "long",
       day: "numeric",
@@ -255,60 +239,48 @@ $("#addEventButton").on("click", function(event){
 
 //SETTING UP OBJECT TO PUSH TO FIREBASE
 var apptDetails = {
-   patientName: patientName,
-   apptDescrip: apptDescrip,
-   apptDate: apptDate
-};
+      patientName: patientName,
+      apptDescrip: apptDescrip,
+      apptDate: apptDate
+   };
 
-database.ref().push(apptDetails);
-
-addForm.style.top = "100%";
-
-
-
+   database.ref().push(apptDetails);
+   addForm.style.top = "100%";
 });
 //END OF FIREBASE STORAGE ON CLICK EVENT
 
 
-//STORE APPOINTMENTS ON CHILD ADDED IN FIREBASE
+//RENDER APPOINTMENTS STORED IN FIREBASE ON THE PAGE W/ UNIQUE IDENTIFIERS
 var firepName;
 var fireDescrip;
 var fireDate;
 var newApptLink;
 database.ref().on("child_added", function(childSnapshot){
-   // console.log(ChildKey);
    firepName = childSnapshot.val().patientName;
    fireDescrip = childSnapshot.val().apptDescrip;
    fireDate = childSnapshot.val().apptDate;
    newApptLink = $("<a>");
-
-   // console.log(childSnapshot.key);
    newApptLink.attr({"href": "appoinment.html",
       "data-fireChildKey": childSnapshot.key,
+      "data-patientName": childSnapshot.val().patientName,
+      "data-apptDate": childSnapshot.val().apptDate,
       "class": "list-group-item list-group-item-action"
       });
    newApptLink.append("<p>" + firepName + ": " + fireDate + " - " + fireDescrip + "</p>");
    $("#apptList").prepend(newApptLink);
 });
 
-
-
-
-
-
-
-
 var addEventButton = document.getElementById("addEventButton");
 addEventButton.onclick = function (e) {
    
-   let title = firepName;
-   let desc = fireDescrip;
+   var title = firepName;
+   var desc = fireDescrip;
 
    if (!title || !desc) {
       document.getElementById("patientNameInput").value = "";
       document.getElementById("eventDescInput").value = "";
-      let labels = addForm.getElementsByTagName("label");
-      for (let i = 0; i < labels.length; i++) {
+      var labels = addForm.getElementsByTagName("label");
+      for (var i = 0; i < labels.length; i++) {
          labels[i].className = "";
       }
       return;
@@ -319,30 +291,29 @@ addEventButton.onclick = function (e) {
 
    if (!selectedDayBlock.querySelector(".day-mark")) {
       selectedDayBlock.appendChild(document.createElement("div")).className = "day-mark";
-      // console.log(newApptLink);
-      // selectedDayBlock.appendChild(document.createElement("div")).className = "appt-details";
-      // $(".appt-details").append(newApptLink);
       $(".lighten-3").on("click", function(event){
          event.preventDefault();
-         // console.log(this);
       });
    }
 
-   let inputs = addForm.getElementsByTagName("input");
-   for (let i = 0; i < inputs.length; i++) {
+   var inputs = addForm.getElementsByTagName("input");
+   for (var i = 0; i < inputs.length; i++) {
       inputs[i].value = "";
    }
-   let labels = addForm.getElementsByTagName("label");
-   for (let i = 0; i < labels.length; i++) {
+   var labels = addForm.getElementsByTagName("label");
+   for (var i = 0; i < labels.length; i++) {
       labels[i].className = "";
    }
 }
 
-$(document).on("click", ".list-group > a", function(event){
-   // event.preventDefault();
-
-
+$(document).on("click", ".list-group > a", function(){
    var currentFireKey = $(this).attr("data-fireChildKey");
    localStorage.setItem("currentFireKey", currentFireKey);
+
+   var currentPatientName = $(this).attr("data-patientName");
+   localStorage.setItem("currentPatientName", currentPatientName);
+
+   var currentApptDate = $(this).attr("data-apptDate");
+   localStorage.setItem("currentApptDate", currentApptDate);
 
 });
