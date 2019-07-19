@@ -9,7 +9,7 @@ var globalEventObj = {};
 //VISUALLY SHOW WHICH DATE HAS BEEN SELECTED BY USING JQUERYUI TO FADE IN/OUT
 $(document).on("click", ".row > .col", function(){
    $(".row > .col").animate({"backgroundColor":"#FFFFFF"});
-   $(this).animate({"backgroundColor":"#8edaa9"});
+   $(this).animate({"backgroundColor":"#89e6e1"});
 });
 
 //IMPORT CALENDAR TEMPLATE FROM CODEPEN
