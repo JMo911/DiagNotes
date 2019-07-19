@@ -112,6 +112,11 @@ button#create-button {
 button#create-button:hover {
     filter: brightness(90%);
 }
+#appointmentInfo {
+    margin: 20px auto;
+    width: 300px;
+    text-align: center;
+}
 .container.appointment-page {
     margin: 20px auto;
     width: 300px;
@@ -265,6 +270,7 @@ footer {
     .navbar,
     #main-content p,
     .container.appointment-page,
+    #appointmentInfo,
     .app,
     .appointment-page textarea,
     .appointment-page h2,
@@ -273,7 +279,7 @@ footer {
     li.note,
     #joke-container,
     form.medication-name {
-        width: 400px;
+        width: 600px;
     }
     button#start-record-btn {
         padding: 20px 15px;
