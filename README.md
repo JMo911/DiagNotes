@@ -10,14 +10,14 @@ According to the [Washington Post](https://www.washingtonpost.com/news/to-your-h
 ### Insurance reimbursement requirements equates to excessive note-taking
 Medstaff spend 15-20 hours of overtime every week recording notes for insurance reporting purposes. Doctors nowadays bring their laptops into appointments to take notes while talking to their patient. This kills chances to build rapport and make a genuine connection with clients, which leads to worse outcomes for the patient. 
 
-### How we can help 
+## How we can help 
 1. Provide a speech recognition that will capture doctors conversations so that they do not have to scribble notes while talking to patients.
 2. House these notes in local storage for protection and easy access.
 3. Include useful APIs to brighten the doctors day on the way to each appointment (jokes they can share with the patient, or at least get a chuckle out of them), medical information (medication dosages, adverse reactions, etc.), local pharmacies (price comparisons, and distance). 
 4. Organize the notes by appointment and make scheduling easy with a simple calendar. 
 
 
-### Future Features?
+## Future Features?
 1. Translation.
 2. Fully integrated google calendar API so that receptionists can schedule doctor's appointments and have all of our content attached.
 3. Text parsing for easy transcription to medical forms.
