@@ -21,24 +21,3 @@ According to the [AMA](https://www.ama-assn.org/practice-management/digital/fami
 1. Translation.
 2. Fully integrated google calendar API so that receptionists can schedule doctor's appointments and have all of our content attached.
 3. Text parsing for easy transcription to medical forms.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-secondary goals/features:
-translation
-audio recording
