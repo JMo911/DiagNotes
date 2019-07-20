@@ -1,4 +1,4 @@
-![Alt text](images/diagnotes-logo.jpg "DiagNotes")
+![Alt text](assets/images/diagnotes-logo.jpg "DiagNotes")
 
 # Target Audience: 
 Doctors, Clinicians, Nursing, Medstaff, Dental, Massage, Chiropractic, etc.
